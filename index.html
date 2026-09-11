@@ -3,54 +3,627 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zentrix Labs PR - Centro Legal y de Privacidad</title>
+    <meta name="description" content="Zentrix Labs PR — Centro de Transparencia, Privacidad y Términos Legales. Documentos oficiales y estado de nuestras aplicaciones.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A1522">
+    <title>Zentrix Labs PR | Centro Legal y de Privacidad</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Zentrix Labs PR — Transparencia y Privacidad">
+    <meta property="og:description" content="Documentos legales oficiales y estado de nuestras aplicaciones.">
+    <meta property="og:locale" content="es_PR">
+
+    <!-- Tipografía -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        header { text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #007AFF; }
-        h1 { color: #007AFF; margin-bottom: 5px; }
-        .subtitle { color: #666; font-size: 0.9em; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        h2 { color: #222; font-size: 1.3em; margin-top: 0; }
-        .btn { display: inline-block; background-color: #007AFF; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px; transition: background 0.3s; }
-        .btn:hover { background-color: #0056b3; }
-        .contact-info { background-color: #eef5ff; padding: 15px; border-radius: 8px; margin-top: 30px; text-align: center; font-size: 0.9em; }
-        footer { text-align: center; margin-top: 40px; color: #888; font-size: 0.8em; }
+        /* =========================================
+           VARIABLES — Institucional en construcción
+           ========================================= */
+        :root {
+            --navy:       #0A1522;
+            --paper:      #FDFCF5;
+            --midnight:   #0E1C30;
+            --gold:       #B89A4D;
+            --gold-soft:  #C9AF6B;
+            --grey:       #6B7280;
+            --grey-line:  rgba(107, 114, 128, 0.28);
+            --amber:      #D69E2E;
+            --pattern:    rgba(232, 239, 223, 0.06);
+
+            --radius-sm: 2px;
+            --radius-md: 4px;
+
+            --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        /* =========================================
+           RESET
+           ========================================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--navy);
+            color: var(--paper);
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-weight: 400;
+            font-size: 1.0625rem; /* 17px */
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* =========================================
+           TIPOGRAFÍA
+           ========================================= */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.15rem; }
+
+        a { color: var(--gold); text-decoration: none; transition: color 0.25s var(--ease); }
+        a:hover { color: var(--gold-soft); }
+
+        /* =========================================
+           HEADER — El Sello
+           Patrón geométrico sutil + reveal orquestado
+           ========================================= */
+        .site-header {
+            position: relative;
+            padding: 5.5rem 1.5rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--grey-line);
+            background-color: var(--navy);
+            background-image:
+                linear-gradient(45deg,  var(--pattern) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--pattern) 25%, transparent 25%),
+                linear-gradient(45deg,  transparent 75%, var(--pattern) 75%),
+                linear-gradient(-45deg, transparent 75%, var(--pattern) 75%);
+            background-size: 26px 26px;
+            background-position: 0 0, 0 13px, 13px -13px, -13px 0;
+            overflow: hidden;
+            animation: headerReveal 1.8s var(--ease) both;
+        }
+
+        @keyframes headerReveal {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-mark {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 4.5rem;
+            color: var(--paper);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+        }
+        .brand-mark span { color: var(--gold); }
+
+        .site-subtitle {
+            color: var(--grey);
+            font-size: 1.05rem;
+            font-weight: 400;
+            max-width: 560px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border: 1px solid var(--amber);
+            border-radius: 999px;
+            color: var(--amber);
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        .status-badge::before {
+            content: "";
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #FFC700;                              
+            box-shadow: 0 0 8px 2px rgba(255, 199, 0, 0.55);
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* =========================================
+           LAYOUT
+           ========================================= */
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4.5rem;
+            animation: fadeInUp 1s var(--ease) both;
+        }
+        .section:nth-of-type(1) { animation-delay: 0.35s; }
+        .section:nth-of-type(2) { animation-delay: 0.5s; }
+        .section:nth-of-type(3) { animation-delay: 0.65s; }
+        .section:nth-of-type(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-label {
+            display: block;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 2.15rem;
+            color: var(--paper);
+            margin-bottom: 2rem;
+            line-height: 1.25;
+        }
+
+        /* =========================================
+           CARTA INSTITUCIONAL (Paper White)
+           ========================================= */
+        .letter {
+            background: var(--paper);
+            color: var(--midnight);
+            padding: 3rem 2.75rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--grey-line);
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+        }
+        .letter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+        }
+        .letter h2 {
+            color: var(--midnight);
+            font-size: 1.65rem;
+            margin-bottom: 1.25rem;
+        }
+        .letter p {
+            color: #2a2a2a;
+            margin-bottom: 1rem;
+        }
+        .letter p:last-of-type { margin-bottom: 0; }
+        .letter .signature {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--grey-line);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--midnight);
+        }
+
+        /* =========================================
+           CENTRO LEGAL — 3 tarjetas con movimiento
+           ========================================= */
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);   /* 2×2 para 4 tarjetas */
+            gap: 1.25rem;
+        }
+
+        .legal-card {
+            background: var(--paper);
+            color: var(--midnight);
+            padding: 2rem 1.75rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--grey-line);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .legal-card::after {
+            content: "";
+            position: absolute;
+            left: 0; top: 0;
+            height: 2px; width: 0;
+            background: var(--gold);
+            transition: width 0.5s var(--ease);
+        }
+        .legal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
+            border-color: var(--gold);
+        }
+        .legal-card:hover::after { width: 100%; }
+
+        .legal-card .card-kicker {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+        .legal-card h3 {
+            color: var(--midnight);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+        .legal-card p {
+            color: #3a3a3a;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+        .legal-card .card-link {
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--midnight);
+            border-bottom: 1px solid var(--gold);
+            align-self: flex-start;
+            padding-bottom: 3px;
+            transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+        }
+        .legal-card .card-link:hover {
+            color: var(--gold);
+            border-color: var(--midnight);
+        }
+
+        /* =========================================
+           ROADMAP — Sobre navy, sin card
+           ========================================= */
+        .roadmap { border-top: 1px solid var(--grey-line); }
+
+        .roadmap-item {
+            display: grid;
+            grid-template-columns: 14px 1fr auto;
+            align-items: baseline;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--grey-line);
+            transition: padding-left 0.35s var(--ease);
+        }
+        .roadmap-item:hover { padding-left: 0.5rem; }
+
+        .roadmap-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--amber);
+            position: relative;
+            top: -2px;
+            box-shadow: 0 0 0 4px rgba(214, 158, 46, 0.12);
+        }
+        .roadmap-item.is-live .roadmap-dot {
+            background: #27c93f;
+            box-shadow: 0 0 0 4px rgba(39, 201, 63, 0.12);
+        }
+
+        .roadmap-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--paper);
+            font-weight: 500;
+        }
+        .roadmap-desc {
+            color: var(--grey);
+            font-size: 0.88rem;
+            margin-top: 0.25rem;
+        }
+        .roadmap-status {
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           CONTACTO
+           ========================================= */
+        .contact-block {
+            background: rgba(253, 252, 245, 0.03);
+            border: 1px solid var(--grey-line);
+            border-radius: var(--radius-md);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .contact-block p {
+            color: var(--grey);
+            margin-bottom: 1.75rem;
+            font-size: 0.95rem;
+        }
+        .contact-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem 3rem;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .contact-item .label {
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .contact-item a {
+            font-size: 1rem;
+            color: var(--paper);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+        }
+        .contact-item a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        .site-footer {
+            border-top: 1px solid var(--grey-line);
+            padding: 2.5rem 1.5rem 3rem;
+            text-align: center;
+            color: var(--grey);
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+        }
+        .site-footer .dot { color: var(--gold); margin: 0 0.5rem; }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 760px) {
+            .legal-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .brand-mark   { font-size: 2.4rem; }
+            h1            { font-size: 1.9rem; }
+            .site-header  { padding: 3.5rem 1.25rem 2.25rem; }
+            main          { padding: 2.5rem 1.25rem 1rem; }
+            .section      { margin-bottom: 3.25rem; }
+            .section-title{ font-size: 1.5rem; }
+            .letter       { padding: 2rem 1.5rem; }
+            .letter h2    { font-size: 1.35rem; }
+            .contact-block{ padding: 2rem 1.25rem; }
+            .roadmap-item {
+                grid-template-columns: 14px 1fr;
+                row-gap: 0.35rem;
+            }
+            .roadmap-status { grid-column: 2; }
+        }
+
+        /* =========================================
+           ACCESIBILIDAD
+           ========================================= */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 3px;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Zentrix Labs PR</h1>
-        <p class="subtitle">Centro de Transparencia, Privacidad y Términos Legales</p>
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+    <header class="site-header">
+        <div class="brand-mark">Zentrix<span>Labs</span> PR</div>
+        <p class="site-subtitle">
+            Centro de Transparencia, Privacidad y Términos Legales
+        </p>
+        <span class="status-badge">En Construcción</span>
     </header>
 
-    <div class="card">
-        <h2>📸 Aplicación: Mapa de Cámaras Cívicas</h2>
-        <p>Política de Privacidad, Términos de Uso y Descargos de Responsabilidad Cívica para nuestra aplicación de transparencia gubernamental.</p>
-        <a href="privacidad-camaras.html" class="btn">Ver Documentos de Cámaras</a>
-    </div>
+    <main>
 
-    <div class="card">
-        <h2>🩺 Aplicación: Bitácora de Suplementos</h2>
-        <p>Política de Privacidad (con protección de datos de salud), Términos de Uso y Descargo de Responsabilidad Médica.</p>
-        <a href="privacidad-salud.html" class="btn">Ver Documentos de Salud</a>
-    </div>
+        <!-- =====================================================
+             CARTA INSTITUCIONAL
+             ===================================================== -->
+        <section class="section" id="carta">
+            <span class="section-label">Carta de Presentación</span>
+            <h2 class="section-title">Quiénes somos y qué estamos construyendo</h2>
 
-    <div class="card">
-        <h2>📈 Aplicación: Bitácora Financiera</h2>
-        <p>Política de Privacidad, Términos de Uso, Descargo de Responsabilidad Financiera y Cláusula de Arbitraje.</p>
-        <a href="privacidad-finanzas.html" class="btn">Ver Documentos Financieros</a>
-    </div>
+            <div class="letter">
+                <h2>Una carta abierta desde Zentrix Labs PR</h2>
+                <p>
+                    Somos Zentrix Labs PR. Construimos instrumentos de transparencia,
+                    privacidad y responsabilidad pública para ciudadanos e instituciones.
+                </p>
+                <p>
+                    Este portal es nuestra carta de presentación. Aquí encontrarás los
+                    documentos legales de nuestras aplicaciones a medida que estén
+                    disponibles, y el calendario público de lo que viene.
+                </p>
+                <p>
+                    No es una página de espera. Es un registro público de lo que
+                    estamos construyendo — con los nombres, las fechas y el propósito
+                    que les define.
+                </p>
+                <p class="signature">— Zentrix Labs PR</p>
+            </div>
+        </section>
 
-    <div class="contact-info">
-        <strong>¿Necesitas contactarnos o ejercer tus derechos de privacidad?</strong><br>
-        Privacidad y Datos: <a href="mailto:privacidad@zentrixlabspr.com">privacidad@zentrixlabspr.com</a><br>
-        Soporte Técnico: <a href="mailto:soporte@zentrixlabspr.com">soporte@zentrixlabspr.com</a><br>
-    </div>
+        <!-- =====================================================
+             CENTRO LEGAL — Documentos disponibles
+             ===================================================== -->
+        <section class="section" id="legal">
+            <span class="section-label">Centro Legal</span>
+            <h2 class="section-title">Documentos oficiales disponibles</h2>
 
-    <footer>
-        <p>&copy; 2026 Zentrix Labs PR. Todos los derechos reservados.<br></p>
+            <div class="legal-grid">
+
+                <article class="legal-card">
+                    <span class="card-kicker">Aplicación</span>
+                    <h3>Mapa de Cámaras Cívicas</h3>
+                    <p>
+                        Política de Privacidad, Términos de Uso y Descargos de
+                        Responsabilidad Cívica para nuestra aplicación de
+                        transparencia gubernamental.
+                    </p>
+                    <a class="card-link" href="privacidad-camaras.html">Ver documentos</a>
+                </article>
+
+                <article class="legal-card">
+                    <span class="card-kicker">Aplicación</span>
+                    <h3>Bitácora de Suplementos</h3>
+                    <p>
+                        Política de Privacidad con protección de datos de salud,
+                        Términos de Uso y Descargo de Responsabilidad Médica.
+                    </p>
+                    <a class="card-link" href="privacidad-salud.html">Ver documentos</a>
+                </article>
+
+                <article class="legal-card">
+                    <span class="card-kicker">Aplicación</span>
+                    <h3>Bitácora Financiera</h3>
+                    <p>
+                        Política de Privacidad, Términos de Uso, Descargo de
+                        Responsabilidad Financiera y Cláusula de Arbitraje.
+                    </p>
+                    <a class="card-link" href="privacidad-finanzas.html">Ver documentos</a>
+                </article>
+
+                <article class="legal-card">
+                    <span class="card-kicker">Aplicación</span>
+                    <h3>Kodex</h3>
+                    <p>
+                        Política de Privacidad, Términos de Uso y Descargos de
+                        Responsabilidad para nuestra bitácora de lectura para
+                        lectores apasionados.
+                    </p>
+                    <a class="card-link" href="privacidad-kodex.html">Ver documentos</a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             ROADMAP
+             ===================================================== -->
+        <section class="section" id="roadmap">
+            <span class="section-label">Lanzamientos Confirmados</span>
+            <h2 class="section-title">Lo que viene</h2>
+
+            <div class="roadmap">
+
+                <div class="roadmap-item">
+                    <span class="roadmap-dot"></span>
+                    <div>
+                        <div class="roadmap-name">Mapa de Cámaras Cívicas</div>
+                        <div class="roadmap-desc">Transparencia gubernamental y acceso ciudadano</div>
+                    </div>
+                    <span class="roadmap-status">Q4 2026</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <span class="roadmap-dot"></span>
+                    <div>
+                        <div class="roadmap-name">Bitácora de Suplementos</div>
+                        <div class="roadmap-desc">Registro personal con protección de datos de salud</div>
+                    </div>
+                    <span class="roadmap-status">Q1 2027</span>
+                </div>
+
+                <div class="roadmap-item">
+                    <span class="roadmap-dot"></span>
+                    <div>
+                        <div class="roadmap-name">Bitácora Financiera</div>
+                        <div class="roadmap-desc">Control de finanzas personales y responsabilidad</div>
+                    </div>
+                    <span class="roadmap-status">Q3 2027</span>
+                </div>
+
+                <div class="roadmap-item"> <!-- Para que encienda la bombila verde, poner esto en class="roadmap-item is-live" -->
+                    <span class="roadmap-dot"></span>
+                    <div>
+                        <div class="roadmap-name">Kodex</div>
+                        <div class="roadmap-desc">Bitácora de lectura para lectores apasionados — documentos legales listos</div>
+                    </div>
+                    <span class="roadmap-status">Q4 2026</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CONTACTO
+             ===================================================== -->
+        <section class="section" id="contacto">
+            <span class="section-label">Contacto Directo</span>
+            <h2 class="section-title">¿Necesitas contactarnos?</h2>
+
+            <div class="contact-block">
+                <p>
+                    Para ejercer tus derechos de privacidad o recibir soporte técnico,
+                    escríbenos directamente. Respondemos a la brevedad.
+                </p>
+
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <span class="label">Privacidad y Datos</span>
+                        <a href="mailto:privacidad@zentrixlabspr.com">privacidad@zentrixlabspr.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label">Soporte Técnico</span>
+                        <a href="mailto:soporte@zentrixlabspr.com">soporte@zentrixlabspr.com</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+    FOOTER
+    ===================================================== -->
+    <footer class="site-footer">
+        &copy; <span id="year"></span> Zentrix Labs PR
+        <span class="dot">·</span>
+        Todos los derechos reservados
     </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
 </body>
 </html>
